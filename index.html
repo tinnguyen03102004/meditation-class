@@ -36,8 +36,8 @@
       width: 100%;
       height: 100%;
       background: rgba(255, 255, 255, 0.6);
-      z-index: 0; /* Lớp phủ nằm dưới cùng */
-      pointer-events: none; /* Không nhận sự kiện click */
+      z-index: 0;
+      pointer-events: none;
     }
     
     /* Các phần tử được đặt lên trên lớp phủ */
@@ -55,6 +55,7 @@
       display: flex;
       gap: 40px;
       font-size: 18px;
+      z-index: 100; /* Đảm bảo menu nằm trên các phần tử khác */
     }
     
     nav a {
