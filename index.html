@@ -5,16 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NamaHealing - Lớp Học Thiền Chữa Lành</title>
   <style>
+    /* Animation hiệu ứng hiện dần */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
     
     @keyframes fadeInHeader {
       from { opacity: 0; transform: translateX(-50%) translateY(10px); }
-      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+      to   { opacity: 1; transform: translateX(-50%) translateY(0); }
     }
     
+    /* Thiết lập cho body */
     body {
       font-family: 'Roboto', sans-serif;
       font-weight: bold;
@@ -23,8 +25,10 @@
       color: #004d40;
       background: url('your-image.jpg') no-repeat center center fixed;
       background-size: cover;
+      position: relative;
     }
     
+    /* Lớp phủ background làm mờ ảnh nền */
     .overlay {
       position: fixed;
       top: 0;
@@ -32,14 +36,17 @@
       width: 100%;
       height: 100%;
       background: rgba(255, 255, 255, 0.6);
-      z-index: 0;
+      z-index: 0; /* Lớp phủ nằm dưới cùng */
+      pointer-events: none; /* Không nhận sự kiện click */
     }
     
+    /* Các phần tử được đặt lên trên lớp phủ */
     nav, header, .hero, footer {
       position: relative;
-      z-index: 1;
+      z-index: 10;
     }
     
+    /* Menu */
     nav {
       position: absolute;
       top: 30px;
@@ -55,14 +62,14 @@
       color: #00251a;
       transition: 0.3s;
       animation: fadeIn 1s ease-in-out;
-      /* Đảm bảo rằng các liên kết có thể nhận sự kiện click */
-      pointer-events: auto;
+      cursor: pointer;
     }
     
     nav a:hover {
       color: #00796b;
     }
     
+    /* Header */
     header {
       position: absolute;
       top: 80px;
@@ -77,6 +84,7 @@
       animation: fadeInHeader 1s ease-in-out;
     }
     
+    /* Phần hero */
     .hero {
       height: 100vh;
       display: flex;
@@ -85,8 +93,8 @@
       justify-content: center;
       color: #004d40;
       text-align: center;
-      position: relative;
       animation: fadeIn 1s ease-in-out;
+      position: relative;
     }
     
     .hero h1 {
@@ -105,6 +113,7 @@
       white-space: nowrap;
     }
     
+    /* Nút Đăng Ký */
     .button {
       background: #004d40;
       padding: 12px 24px;
@@ -116,12 +125,14 @@
       border: 1px solid white;
       transition: 0.3s;
       animation: fadeIn 1s ease-in-out;
+      cursor: pointer;
     }
     
     .button:hover {
       background: #00796b;
     }
     
+    /* Footer */
     footer {
       background: #004d40;
       color: white;
@@ -129,30 +140,36 @@
       padding: 20px;
       margin-top: 20px;
       animation: fadeIn 1s ease-in-out;
+      position: relative;
     }
   </style>
 </head>
 <body>
+  <!-- Lớp phủ background -->
   <div class="overlay"></div>
   
+  <!-- Menu -->
   <nav>
-    <a href="trang-chu.html" target="_self">Trang Chủ</a>
-    <a href="gioi-thieu.html" target="_self">Giới Thiệu</a>
-    <a href="podcast.html" target="_self">Podcast</a>
-    <a href="dang-ky.html" target="_self">Đăng Ký</a>
+    <a href="trang-chu.html">Trang Chủ</a>
+    <a href="gioi-thieu.html">Giới Thiệu</a>
+    <a href="podcast.html">Podcast</a>
+    <a href="dang-ky.html">Đăng Ký</a>
   </nav>
 
+  <!-- Header -->
   <header>
     NamaHealing - Lớp Học Thiền Chữa Lành <br>
     Giảng dạy bởi Tiến Sĩ Võ Trọng Nghĩa
   </header>
 
+  <!-- Phần Hero -->
   <section class="hero">
     <h1>Khám Phá Sự Bình An Nội Tâm</h1>
     <p>Tham gia lớp thiền định để chữa lành và cân bằng tâm trí.</p>
-    <a href="dang-ky.html" target="_self" class="button">Đăng Ký Ngay</a>
+    <a href="dang-ky.html" class="button">Đăng Ký Ngay</a>
   </section>
 
+  <!-- Footer -->
   <footer>
     &copy; 2025 NamaHealing - Lớp Học Thiền Chữa Lành
   </footer>
