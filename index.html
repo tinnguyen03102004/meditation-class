@@ -55,6 +55,8 @@
       color: #00251a;
       transition: 0.3s;
       animation: fadeIn 1s ease-in-out;
+      /* Đảm bảo rằng các liên kết có thể nhận sự kiện click */
+      pointer-events: auto;
     }
     
     nav a:hover {
@@ -134,10 +136,10 @@
   <div class="overlay"></div>
   
   <nav>
-    <a href="trang-chu.html">Trang Chủ</a>
-    <a href="gioi-thieu.html">Giới Thiệu</a>
-    <a href="podcast.html">Podcast</a>
-    <a href="dang-ky.html">Đăng Ký</a>
+    <a href="trang-chu.html" target="_self">Trang Chủ</a>
+    <a href="gioi-thieu.html" target="_self">Giới Thiệu</a>
+    <a href="podcast.html" target="_self">Podcast</a>
+    <a href="dang-ky.html" target="_self">Đăng Ký</a>
   </nav>
 
   <header>
@@ -148,7 +150,7 @@
   <section class="hero">
     <h1>Khám Phá Sự Bình An Nội Tâm</h1>
     <p>Tham gia lớp thiền định để chữa lành và cân bằng tâm trí.</p>
-    <a href="dang-ky.html" class="button">Đăng Ký Ngay</a>
+    <a href="dang-ky.html" target="_self" class="button">Đăng Ký Ngay</a>
   </section>
 
   <footer>
