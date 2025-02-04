@@ -11,9 +11,15 @@
       to   { opacity: 1; transform: translateY(0); }
     }
     
+    @keyframes fadeInHeader {
+      from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+      to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+    
     /* Thiết lập cho body */
     body {
       font-family: 'Roboto', sans-serif;
+      font-weight: bold;
       margin: 0;
       padding: 0;
       color: #004d40;
@@ -43,6 +49,8 @@
       display: flex;
       gap: 20px;
       font-size: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
       z-index: 100;
     }
     
@@ -51,23 +59,11 @@
       color: #00251a;
       transition: 0.3s;
       animation: fadeIn 1s ease-in-out;
+      cursor: pointer;
     }
     
     nav a:hover {
       color: #00796b;
-    }
-    
-    /* Responsive Menu */
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.8);
-        padding: 10px;
-        position: fixed;
-        width: 100%;
-        top: 0;
-      }
     }
     
     /* Header */
@@ -77,38 +73,57 @@
       left: 50%;
       transform: translateX(-50%);
       color: #00251a;
-      font-size: 20px;
+      font-size: 22px;
       text-align: center;
       background: rgba(255, 255, 255, 0.7);
-      padding: 8px 16px;
+      padding: 10px 15px;
       border-radius: 10px;
+      animation: fadeInHeader 1s ease-in-out;
+      width: 90%;
+      max-width: 600px;
     }
     
     /* Phần hero */
     .hero {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      color: #004d40;
       text-align: center;
+      animation: fadeIn 1s ease-in-out;
+      padding: 20px;
     }
     
     .hero h1 {
-      font-size: 36px;
+      font-size: 48px;
+      letter-spacing: 2px;
+      color: #00251a;
+      font-family: 'Poppins', sans-serif;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     }
     
     .hero p {
-      font-size: 18px;
+      font-size: 20px;
+      max-width: 90%;
+      margin-top: 10px;
+      color: #00251a;
+      white-space: normal;
     }
     
     /* Nút Đăng Ký */
     .button {
       background: #004d40;
-      padding: 10px 20px;
+      padding: 12px 24px;
       border-radius: 5px;
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
       color: white;
-      border: none;
+      border: 1px solid white;
+      transition: 0.3s;
+      animation: fadeIn 1s ease-in-out;
       cursor: pointer;
     }
     
@@ -122,35 +137,76 @@
       color: white;
       text-align: center;
       padding: 15px;
+      margin-top: 20px;
+      animation: fadeIn 1s ease-in-out;
+      position: relative;
+      font-size: 14px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+      
+      .hero h1 {
+        font-size: 36px;
+      }
+      
+      .hero p {
+        font-size: 18px;
+      }
+      
+      .button {
+        padding: 10px 20px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header {
+        font-size: 18px;
+        padding: 8px 12px;
+      }
+      
+      .hero h1 {
+        font-size: 28px;
+      }
+      
+      .hero p {
+        font-size: 16px;
+      }
+      
+      .button {
+        padding: 8px 16px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="overlay"></div>
   
-  <!-- Menu -->
   <nav>
-    <a href="#">Trang Chủ</a>
-    <a href="#">Giới Thiệu</a>
-    <a href="#">Podcast</a>
-    <a href="#">Đăng Ký</a>
+    <a href="trang-chu.html">Trang Chủ</a>
+    <a href="gioi-thieu.html">Giới Thiệu</a>
+    <a href="podcast.html">Podcast</a>
+    <a href="dang-ky.html">Đăng Ký</a>
   </nav>
-  
-  <!-- Header -->
+
   <header>
-    NamaHealing - Lớp Học Thiền Chữa Lành
+    NamaHealing - Lớp Học Thiền Chữa Lành <br>
+    Giảng dạy bởi Tiến Sĩ Võ Trọng Nghĩa
   </header>
-  
-  <!-- Phần Hero -->
+
   <section class="hero">
     <h1>Khám Phá Sự Bình An Nội Tâm</h1>
     <p>Tham gia lớp thiền định để chữa lành và cân bằng tâm trí.</p>
-    <button class="button">Đăng Ký Ngay</button>
+    <a href="dang-ky.html" class="button">Đăng Ký Ngay</a>
   </section>
-  
-  <!-- Footer -->
+
   <footer>
-    &copy; 2025 NamaHealing
+    &copy; 2025 NamaHealing - Lớp Học Thiền Chữa Lành
   </footer>
 </body>
 </html>
