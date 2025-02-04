@@ -1,102 +1,178 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NamaHealing - L?p H?c Thi?n Ch?a L�nh</title>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #004d40;
-            background: url('your-image.jpg') no-repeat center center fixed;
-            background-size: cover;
-        }
-        header { 
-            position: absolute; 
-            top: 80px; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            color: #00251a; 
-            font-size: 24px; 
-            text-align: center; 
-            font-weight: bold; 
-            background: rgba(255, 255, 255, 0.7); 
-            padding: 10px 20px; 
-            border-radius: 10px;
-        }
-        .hero {
-            background: rgba(255, 255, 255, 0.6);
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #004d40;
-            text-align: center;
-            position: relative;
-        }
-        .hero h1 { 
-            font-size: 54px; 
-            letter-spacing: 2px; 
-            color: #00251a; 
-            font-family: 'Poppins', sans-serif;
-            font-weight: bold;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-        }
-        .hero p { font-size: 22px; max-width: 600px; margin-top: 10px; color: #00251a; }
-        nav {
-            position: absolute;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 40px;
-            font-size: 18px;
-        }
-        nav a {
-            text-decoration: none;
-            color: #00251a;
-            transition: 0.3s;
-        }
-        nav a:hover { color: #00796b; }
-        .button {
-            background: #004d40;
-            padding: 12px 24px;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 20px;
-            text-decoration: none;
-            color: white;
-            border: 1px solid white;
-            transition: 0.3s;
-        }
-        .button:hover { background: #00796b; }
-        footer { background: #004d40; color: white; text-align: center; padding: 20px; margin-top: 20px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NamaHealing - Lớp Học Thiền Chữa Lành</title>
+  <style>
+    /* Animation hiệu ứng hiện dần */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes fadeInHeader {
+      from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+      to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+    
+    /* Thiết lập cho body */
+    body {
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+      color: #004d40;
+      background: url('your-image.jpg') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+    
+    /* Lớp phủ background làm mờ ảnh nền */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.6);
+      z-index: 0;
+      pointer-events: none;
+    }
+    
+    /* Các phần tử được đặt lên trên lớp phủ */
+    nav, header, .hero, footer {
+      position: relative;
+      z-index: 10;
+    }
+    
+    /* Menu */
+    nav {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 40px;
+      font-size: 18px;
+      z-index: 100; /* Đảm bảo menu nằm trên các phần tử khác */
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: #00251a;
+      transition: 0.3s;
+      animation: fadeIn 1s ease-in-out;
+      cursor: pointer;
+    }
+    
+    nav a:hover {
+      color: #00796b;
+    }
+    
+    /* Header */
+    header {
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #00251a;
+      font-size: 24px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 10px 20px;
+      border-radius: 10px;
+      animation: fadeInHeader 1s ease-in-out;
+    }
+    
+    /* Phần hero */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #004d40;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+      position: relative;
+    }
+    
+    .hero h1 {
+      font-size: 54px;
+      letter-spacing: 2px;
+      color: #00251a;
+      font-family: 'Poppins', sans-serif;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    .hero p {
+      font-size: 22px;
+      max-width: 100%;
+      margin-top: 10px;
+      color: #00251a;
+      white-space: nowrap;
+    }
+    
+    /* Nút Đăng Ký */
+    .button {
+      background: #004d40;
+      padding: 12px 24px;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: white;
+      border: 1px solid white;
+      transition: 0.3s;
+      animation: fadeIn 1s ease-in-out;
+      cursor: pointer;
+    }
+    
+    .button:hover {
+      background: #00796b;
+    }
+    
+    /* Footer */
+    footer {
+      background: #004d40;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+      animation: fadeIn 1s ease-in-out;
+      position: relative;
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <a href="#">Trang Ch?</a>
-        <a href="#gioithieu">Gi?i Thi?u</a>
-        <a href="#podcast">Podcast</a>
-        <a href="#dangky">�ang K�</a>
-    </nav>
-    
-    <header>
-        NamaHealing - L?p H?c Thi?n Ch?a L�nh <br>
-        Gi?ng d?y b?i Ti?n Si V� Tr?ng Nghia
-    </header>
-    
-    <section class="hero">
-        <h1>Kh�m Ph� S? B�nh An N?i T�m</h1>
-        <p>Tham gia l?p thi?n d?nh d? ch?a l�nh v� c�n b?ng t�m tr�.</p>
-        <a href="#dangky" class="button">�ang K� Ngay</a>
-    </section>
-    
-    <footer>
-        &copy; 2025 NamaHealing - L?p H?c Thi?n Ch?a L�nh
-    </footer>
+  <!-- Lớp phủ background -->
+  <div class="overlay"></div>
+  
+  <!-- Menu -->
+  <nav>
+    <a href="trang-chu.html">Trang Chủ</a>
+    <a href="gioi-thieu.html">Giới Thiệu</a>
+    <a href="podcast.html">Podcast</a>
+    <a href="dang-ky.html">Đăng Ký</a>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    NamaHealing - Lớp Học Thiền Chữa Lành <br>
+    Giảng dạy bởi Tiến Sĩ Võ Trọng Nghĩa
+  </header>
+
+  <!-- Phần Hero -->
+  <section class="hero">
+    <h1>Khám Phá Sự Bình An Nội Tâm</h1>
+    <p>Tham gia lớp thiền định để chữa lành và cân bằng tâm trí.</p>
+    <a href="dang-ky.html" class="button">Đăng Ký Ngay</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 NamaHealing - Lớp Học Thiền Chữa Lành
+  </footer>
 </body>
 </html>
