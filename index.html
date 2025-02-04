@@ -5,8 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NamaHealing - Lớp Học Thiền Chữa Lành</title>
   <style>
+    /* Animation hiệu ứng hiện dần */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes fadeInHeader {
+      from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+      to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+    
+    /* Thiết lập cho body */
     body {
       font-family: 'Roboto', sans-serif;
+      font-weight: bold;
       margin: 0;
       padding: 0;
       color: #004d40;
@@ -15,6 +28,7 @@
       position: relative;
     }
     
+    /* Lớp phủ background làm mờ ảnh nền */
     .overlay {
       position: fixed;
       top: 0;
@@ -26,17 +40,7 @@
       pointer-events: none;
     }
     
-    .menu-toggle {
-      display: none;
-      font-size: 30px;
-      cursor: pointer;
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      color: #00251a;
-      z-index: 200;
-    }
-    
+    /* Menu */
     nav {
       position: absolute;
       top: 20px;
@@ -45,6 +49,8 @@
       display: flex;
       gap: 20px;
       font-size: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
       z-index: 100;
     }
     
@@ -52,39 +58,15 @@
       text-decoration: none;
       color: #00251a;
       transition: 0.3s;
+      animation: fadeIn 1s ease-in-out;
+      cursor: pointer;
     }
     
     nav a:hover {
       color: #00796b;
     }
     
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-      
-      nav {
-        display: none;
-        flex-direction: column;
-        background: rgba(255, 255, 255, 0.9);
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-      }
-      
-      nav a {
-        display: block;
-        padding: 10px;
-      }
-      
-      .menu-open nav {
-        display: flex;
-      }
-    }
-    
+    /* Header */
     header {
       position: absolute;
       top: 80px;
@@ -96,84 +78,115 @@
       background: rgba(255, 255, 255, 0.7);
       padding: 10px 15px;
       border-radius: 10px;
+      animation: fadeInHeader 1s ease-in-out;
       width: 90%;
       max-width: 600px;
     }
     
+    /* Phần hero */
     .hero {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      color: #004d40;
       text-align: center;
+      animation: fadeIn 1s ease-in-out;
       padding: 20px;
     }
     
     .hero h1 {
       font-size: 48px;
+      letter-spacing: 2px;
       color: #00251a;
       font-family: 'Poppins', sans-serif;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     }
     
     .hero p {
       font-size: 20px;
       max-width: 90%;
+      margin-top: 10px;
+      color: #00251a;
+      white-space: normal;
     }
     
+    /* Nút Đăng Ký */
     .button {
       background: #004d40;
       padding: 12px 24px;
       border-radius: 5px;
+      display: inline-block;
+      margin-top: 20px;
       text-decoration: none;
       color: white;
       border: 1px solid white;
       transition: 0.3s;
+      animation: fadeIn 1s ease-in-out;
+      cursor: pointer;
     }
     
     .button:hover {
       background: #00796b;
     }
     
+    /* Footer */
     footer {
       background: #004d40;
       color: white;
       text-align: center;
       padding: 15px;
+      margin-top: 20px;
+      animation: fadeIn 1s ease-in-out;
+      position: relative;
       font-size: 14px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        background: rgba(255, 255, 255, 0.9);
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .mobile-menu.active {
+        display: flex;
+      }
     }
   </style>
 </head>
 <body>
   <div class="overlay"></div>
   
-  <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
-  <nav>
+  <nav class="mobile-menu">
     <a href="trang-chu.html">Trang Chủ</a>
     <a href="gioi-thieu.html">Giới Thiệu</a>
     <a href="podcast.html">Podcast</a>
     <a href="dang-ky.html">Đăng Ký</a>
   </nav>
-  
+
   <header>
     NamaHealing - Lớp Học Thiền Chữa Lành <br>
     Giảng dạy bởi Tiến Sĩ Võ Trọng Nghĩa
   </header>
-  
+
   <section class="hero">
     <h1>Khám Phá Sự Bình An Nội Tâm</h1>
     <p>Tham gia lớp thiền định để chữa lành và cân bằng tâm trí.</p>
     <a href="dang-ky.html" class="button">Đăng Ký Ngay</a>
   </section>
-  
+
   <footer>
     &copy; 2025 NamaHealing - Lớp Học Thiền Chữa Lành
   </footer>
-  
-  <script>
-    function toggleMenu() {
-      document.body.classList.toggle('menu-open');
-    }
-  </script>
 </body>
 </html>
