@@ -5,19 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NamaHealing - Lớp Học Thiền Chữa Lành</title>
   <style>
-    /* Animation chung cho các phần tử */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
     
-    /* Animation riêng cho header để giữ căn giữa theo trục X */
     @keyframes fadeInHeader {
       from { opacity: 0; transform: translateX(-50%) translateY(10px); }
       to { opacity: 1; transform: translateX(-50%) translateY(0); }
     }
     
-    /* Đặt font-weight bold cho toàn bộ nội dung */
     body {
       font-family: 'Roboto', sans-serif;
       font-weight: bold;
@@ -26,6 +23,21 @@
       color: #004d40;
       background: url('your-image.jpg') no-repeat center center fixed;
       background-size: cover;
+    }
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.6);
+      z-index: 0;
+    }
+    
+    nav, header, .hero, footer {
+      position: relative;
+      z-index: 1;
     }
     
     nav {
@@ -64,7 +76,6 @@
     }
     
     .hero {
-      background: rgba(255, 255, 255, 0.6);
       height: 100vh;
       display: flex;
       flex-direction: column;
@@ -86,9 +97,10 @@
     
     .hero p {
       font-size: 22px;
-      max-width: 600px;
+      max-width: 100%;
       margin-top: 10px;
       color: #00251a;
+      white-space: nowrap;
     }
     
     .button {
@@ -119,11 +131,13 @@
   </style>
 </head>
 <body>
+  <div class="overlay"></div>
+  
   <nav>
-    <a href="#">Trang Chủ</a>
-    <a href="#gioithieu">Giới Thiệu</a>
-    <a href="#podcast">Podcast</a>
-    <a href="#dangky">Đăng Ký</a>
+    <a href="trang-chu.html">Trang Chủ</a>
+    <a href="gioi-thieu.html">Giới Thiệu</a>
+    <a href="podcast.html">Podcast</a>
+    <a href="dang-ky.html">Đăng Ký</a>
   </nav>
 
   <header>
@@ -134,7 +148,7 @@
   <section class="hero">
     <h1>Khám Phá Sự Bình An Nội Tâm</h1>
     <p>Tham gia lớp thiền định để chữa lành và cân bằng tâm trí.</p>
-    <a href="#dangky" class="button">Đăng Ký Ngay</a>
+    <a href="dang-ky.html" class="button">Đăng Ký Ngay</a>
   </section>
 
   <footer>
