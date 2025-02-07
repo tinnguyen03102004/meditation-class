@@ -26,22 +26,33 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      /* Nếu nội dung vượt quá kích thước màn hình, người dùng vẫn có thể cuộn */
+      position: relative;
       overflow-x: hidden;
     }
 
-    /* Container chính chứa nội dung */
+    /* Lớp phủ làm mờ toàn bộ màn hình */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Container chính chứa nội dung, dùng height: 70vh để giữ khoảng cách đều trên desktop */
     .container {
       width: 90%;
       max-width: 800px;
-      height: 70vh;
+      height: 70vh;  /* Giữ chiều cao cố định trên desktop để các phần được phân bố đều */
       padding: 40px 20px;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
       border-radius: 10px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      position: relative;
+      z-index: 1;
     }
 
     /* Phần trên: hiển thị subtitle */
@@ -74,7 +85,7 @@
     nav {
       display: inline-flex;
       gap: 30px;
-      flex-wrap: wrap; /* Cho phép các mục xuống dòng nếu không đủ chỗ */
+      flex-wrap: wrap;
     }
     nav a {
       text-decoration: none;
@@ -83,7 +94,6 @@
       position: relative;
       padding: 5px;
     }
-    /* Hiệu ứng gạch chân khi hover và trạng thái active */
     nav a::after {
       content: "";
       position: absolute;
@@ -104,11 +114,9 @@
 
     /* === MEDIA QUERIES CHO THIẾT BỊ NHỎ === */
 
-    /* Khi màn hình nhỏ hơn hoặc bằng 768px */
     @media (max-width: 768px) {
       .container {
-        /* Cho phép container tự điều chỉnh chiều cao nếu cần */
-        height: auto;
+        height: auto;  /* Cho phép container tự điều chỉnh chiều cao trên màn hình nhỏ */
         padding: 30px 15px;
       }
       .middle .title {
@@ -124,7 +132,6 @@
       }
     }
 
-    /* Khi màn hình nhỏ hơn hoặc bằng 480px (điện thoại) */
     @media (max-width: 480px) {
       .container {
         padding: 20px 10px;
@@ -148,6 +155,7 @@
   </style>
 </head>
 <body>
+  <div class="overlay"></div>
   <div class="container">
     <!-- Phần trên: Subtitle -->
     <div class="top">
