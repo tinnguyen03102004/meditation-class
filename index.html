@@ -2,30 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!-- Meta viewport quan trọng để thiết lập responsive trên mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sleep Diplomat</title>
   <style>
     /* Import phông chữ Montserrat với weight 300 */
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
 
-    /* Reset margin, padding và sử dụng box-sizing: border-box */
+    /* Reset margin, padding và thiết lập box-sizing: border-box cho mọi phần tử */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /* Cài đặt cho body: nền full screen, ảnh nền cố định, căn giữa nội dung */
+    /* Cài đặt cho body: sử dụng ảnh nền full screen, căn giữa nội dung */
     body {
       font-family: "Montserrat", sans-serif;
       background: url("your-image.jpg") no-repeat center center fixed;
       background-size: cover;
       color: #555;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
+      /* Nếu nội dung vượt quá kích thước màn hình, người dùng vẫn có thể cuộn */
+      overflow-x: hidden;
     }
 
     /* Container chính chứa nội dung */
@@ -42,7 +44,7 @@
       justify-content: space-between;
     }
 
-    /* Phần trên: hiển thị subtitle (vd: "Matt Walker") */
+    /* Phần trên: hiển thị subtitle */
     .top {
       text-align: center;
     }
@@ -52,7 +54,7 @@
       color: rgba(0, 0, 0, 0.5);
     }
 
-    /* Phần giữa: hiển thị tiêu đề chính (vd: "SLEEP DIPLOMAT") */
+    /* Phần giữa: hiển thị tiêu đề chính */
     .middle {
       text-align: center;
       display: flex;
@@ -72,6 +74,7 @@
     nav {
       display: inline-flex;
       gap: 30px;
+      flex-wrap: wrap; /* Cho phép các mục xuống dòng nếu không đủ chỗ */
     }
     nav a {
       text-decoration: none;
@@ -97,6 +100,50 @@
     }
     nav a.active {
       color: #c98f5c;
+    }
+
+    /* === MEDIA QUERIES CHO THIẾT BỊ NHỎ === */
+
+    /* Khi màn hình nhỏ hơn hoặc bằng 768px */
+    @media (max-width: 768px) {
+      .container {
+        /* Cho phép container tự điều chỉnh chiều cao nếu cần */
+        height: auto;
+        padding: 30px 15px;
+      }
+      .middle .title {
+        font-size: 40px;
+        letter-spacing: 2px;
+      }
+      nav {
+        gap: 20px;
+      }
+      nav a {
+        font-size: 14px;
+        padding: 4px;
+      }
+    }
+
+    /* Khi màn hình nhỏ hơn hoặc bằng 480px (điện thoại) */
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px 10px;
+      }
+      .top .subtitle {
+        font-size: 12px;
+      }
+      .middle .title {
+        font-size: 32px;
+        letter-spacing: 1.5px;
+      }
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+      nav a {
+        font-size: 14px;
+        padding: 5px 0;
+      }
     }
   </style>
 </head>
