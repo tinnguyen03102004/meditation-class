@@ -1,138 +1,359 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sleep Diplomat</title>
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: "Montserrat", sans-serif;
-      background: url("your-image.jpg") no-repeat center center fixed;
-      background-size: cover;
-      color: #fff; /* Đổi màu chữ thành trắng */
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.3); /* Tăng độ tối giúp chữ dễ đọc hơn */
-      backdrop-filter: blur(10px);
-    }
-
-    .container {
-      width: 90%;
-      max-width: 800px;
-      height: 70vh;
-      padding: 40px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      z-index: 1;
-      text-align: center;
-    }
-
-    .top .subtitle {
-      font-size: 14px;
-      font-weight: 300;
-      color: rgba(255, 255, 255, 0.8); /* Chỉnh màu subtitle sáng hơn */
-    }
-
-    .middle .title {
-      font-size: 60px;
-      letter-spacing: 3px;
-      font-weight: 300;
-    }
-
-    nav {
-      display: inline-flex;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      text-decoration: none;
-      font-size: 16px;
-      color: #fff;
-      position: relative;
-      padding: 5px;
-      transition: color 0.3s;
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background: #fff;
-      transition: width 0.3s;
-    }
-
-    nav a:hover::after,
-    nav a.active::after {
-      width: 100%;
-    }
-
-    nav a.active {
-      color: #c98f5c;
-    }
-
-    @media (max-width: 768px) {
-      .middle .title {
-        font-size: 40px;
-      }
-      nav {
-        gap: 20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .middle .title {
-        font-size: 32px;
-      }
-      nav {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAMA HEALING - Lớp Thiền</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#d4af37',secondary:'#ffffff'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body, html {
+height: 100%;
+margin: 0;
+overflow: hidden;
+font-family: 'Montserrat', sans-serif;
+background-color: #000;
+color: #fff;
+}
+.radial-bg {
+background: radial-gradient(circle at center, rgba(50, 50, 50, 0.5) 0%, rgba(0, 0, 0, 1) 70%);
+position: absolute;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+z-index: -1;
+}
+.light-beam {
+position: absolute;
+width: 100%;
+height: 100%;
+background: url('your-image.jpg') no-repeat center center;
+background-size: cover;
+opacity: 0.7;
+z-index: -2;
+filter: brightness(0.6) contrast(1.2);
+}
+.main-title {
+text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+letter-spacing: 0.5rem;
+}
+.nav-item {
+position: relative;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+.nav-item::after {
+content: '';
+position: absolute;
+width: 0;
+height: 1px;
+bottom: -2px;
+left: 50%;
+background-color: #d4af37;
+transition: all 0.3s ease;
+transform: translateX(-50%);
+}
+.nav-item:hover::after {
+width: 100%;
+}
+.nav-item.active {
+color: #d4af37;
+}
+.nav-item.active::after {
+width: 100%;
+background-color: #d4af37;
+}
+.content-section {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.5s ease, visibility 0.5s ease;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 0 20px;
+overflow-y: auto;
+background: rgba(0, 0, 0, 0.7);
+}
+.content-section.active {
+opacity: 1;
+visibility: visible;
+}
+.close-btn {
+position: absolute;
+top: 20px;
+right: 20px;
+cursor: pointer;
+transition: transform 0.3s ease;
+}
+.close-btn:hover {
+transform: rotate(90deg);
+}
+.content-container {
+max-width: 800px;
+margin: 0 auto;
+background: rgba(0, 0, 0, 0.8);
+padding: 40px;
+border-radius: 8px;
+border: 1px solid rgba(212, 175, 55, 0.3);
+}
+.light-pulse {
+animation: pulse 4s infinite alternate;
+}
+@keyframes pulse {
+0% {
+opacity: 0.6;
+transform: scale(1);
+}
+100% {
+opacity: 1;
+transform: scale(1.05);
+}
+}
+</style>
 </head>
 <body>
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="top">
-      <div class="subtitle">Vo Trong Nghia</div>
-    </div>
-    <div class="middle">
-      <div class="title">NAMA HEALING</div>
-    </div>
-    <div class="bottom">
-      <nav>
-        <a href="#" class="active">Home</a>
-        <a href="#">Professor</a>
-        <a href="#">Podcast</a>
-        <a href="#">More</a>
-      </nav>
-    </div>
-  </div>
+<div class="light-beam"></div>
+<div class="radial-bg"></div>
+<div class="fixed top-32 w-full flex justify-center p-6 z-10">
+<div class="text-white text-2xl font-medium tracking-wider border-b-2 border-white border-opacity-30 pb-1 px-4 hover:border-opacity-100 transition-all">Vo Trong Nghia</div>
+</div>
+<div class="h-screen flex flex-col items-center justify-center">
+<div class="flex flex-col items-center justify-center h-full">
+<h1 class="main-title text-4xl md:text-6xl font-light text-white mb-24 light-pulse">NAMA HEALING</h1>
+<nav class="flex space-x-8 text-sm">
+<div id="nav-home" class="nav-item active text-primary">Home</div>
+<div id="nav-professor" class="nav-item text-white opacity-80">Professor</div>
+<div id="nav-podcast" class="nav-item text-white opacity-80">Podcast</div>
+<div id="nav-more" class="nav-item text-white opacity-80">More</div>
+</nav>
+</div>
+</div>
+<!-- Home Section -->
+<section id="home-section" class="content-section">
+<div class="close-btn w-8 h-8 flex items-center justify-center text-white">
+<i class="ri-close-line ri-2x"></i>
+</div>
+<div class="content-container">
+<h2 class="text-3xl font-light text-primary mb-6">Chào Mừng Đến Với NAMA HEALING</h2>
+<p class="mb-4">NAMA HEALING là nơi bạn có thể tìm thấy sự bình yên nội tâm thông qua các phương pháp thiền định cổ xưa được kết hợp với khoa học hiện đại.</p>
+<p class="mb-4">Chúng tôi tạo ra một không gian an toàn, nơi bạn có thể học cách kết nối với bản thân mình sâu sắc hơn, giảm căng thẳng và tìm thấy sự cân bằng trong cuộc sống hàng ngày.</p>
+<p class="mb-6">Các lớp học của chúng tôi phù hợp cho mọi cấp độ, từ người mới bắt đầu đến những người đã có kinh nghiệm thiền lâu năm.</p>
+<h3 class="text-xl font-medium text-primary mb-4">Lịch Học Tháng 5/2025</h3>
+<ul class="list-disc pl-5 mb-6">
+<li class="mb-2">Thứ Hai & Thứ Tư: 6:00 - 7:30 sáng (Thiền Căn Bản)</li>
+<li class="mb-2">Thứ Ba & Thứ Năm: 18:30 - 20:00 tối (Thiền Nâng Cao)</li>
+<li class="mb-2">Thứ Bảy: 9:00 - 11:00 sáng (Hội Thảo Đặc Biệt)</li>
+<li>Chủ Nhật: 16:00 - 17:30 chiều (Thiền Trị Liệu)</li>
+</ul>
+<div class="mt-8">
+<button class="bg-primary text-black py-2 px-6 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-all">Đăng Ký Ngay</button>
+</div>
+</div>
+</section>
+<!-- Professor Section -->
+<section id="professor-section" class="content-section">
+<div class="close-btn w-8 h-8 flex items-center justify-center text-white">
+<i class="ri-close-line ri-2x"></i>
+</div>
+<div class="content-container">
+<h2 class="text-3xl font-light text-primary mb-6">Giảng Viên</h2>
+<div class="flex flex-col md:flex-row gap-8 mb-8">
+<div class="md:w-1/3">
+<div class="aspect-square overflow-hidden rounded-md mb-4">
+<img src="https://readdy.ai/api/search-image?query=portrait%2520of%2520a%2520serene%2520Vietnamese%2520meditation%2520teacher%252C%2520male%252C%252045%2520years%2520old%252C%2520calm%2520expression%252C%2520minimal%2520studio%2520lighting%252C%2520dark%2520background%252C%2520professional%2520photograph%252C%2520high%2520quality%252C%2520peaceful%2520demeanor%252C%2520spiritual%2520aura&width=400&height=400&seq=12346&orientation=squarish" alt="Thầy Võ Trọng Nghĩa" class="w-full h-full object-cover object-top">
+</div>
+</div>
+<div class="md:w-2/3">
+<h3 class="text-xl font-medium text-primary mb-2">Thầy Võ Trọng Nghĩa</h3>
+<p class="text-sm text-gray-400 mb-4">Người Sáng Lập & Giảng Viên Chính</p>
+<p class="mb-4">Với hơn 20 năm kinh nghiệm trong lĩnh vực thiền định và chữa lành, Thầy Võ Trọng Nghĩa đã giúp hàng nghìn học viên tìm thấy sự bình yên nội tâm và cải thiện chất lượng cuộc sống.</p>
+<p class="mb-4">Thầy Nghĩa đã tu học tại nhiều tu viện ở Việt Nam, Ấn Độ và Nepal, kết hợp những triết lý cổ xưa với khoa học hiện đại để tạo ra phương pháp NAMA HEALING độc đáo.</p>
+<p>Ngoài việc giảng dạy thiền, Thầy Nghĩa còn là tác giả của nhiều cuốn sách về tâm linh và phát triển bản thân, được dịch ra nhiều ngôn ngữ khác nhau trên thế giới.</p>
+</div>
+</div>
+<div class="mt-6">
+<h3 class="text-xl font-medium text-primary mb-4">Chứng Nhận & Học Vị</h3>
+<ul class="list-disc pl-5">
+<li class="mb-2">Tiến sĩ Tâm lý học, Đại học Quốc gia Hà Nội</li>
+<li class="mb-2">Chứng nhận Giảng viên Thiền Vipassana cấp cao</li>
+<li class="mb-2">Chứng nhận Yoga trị liệu từ Hiệp hội Yoga Quốc tế</li>
+<li>Thành viên Hiệp hội Nghiên cứu Thiền Quốc tế</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Podcast Section -->
+<section id="podcast-section" class="content-section">
+<div class="close-btn w-8 h-8 flex items-center justify-center text-white">
+<i class="ri-close-line ri-2x"></i>
+</div>
+<div class="content-container">
+<h2 class="text-3xl font-light text-primary mb-6">Podcast & Thiền Hướng Dẫn</h2>
+<p class="mb-6">Khám phá bộ sưu tập podcast và các bài thiền hướng dẫn của chúng tôi để thực hành tại nhà. Mỗi tập tập trung vào một chủ đề khác nhau, từ giảm căng thẳng đến tăng cường năng lượng tích cực.</p>
+<div class="space-y-4 mb-8">
+<div class="border border-primary border-opacity-30 p-4 rounded-md hover:bg-black hover:bg-opacity-50 transition-all">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="text-lg font-medium text-primary">Thiền Buổi Sáng - 15 phút</h3>
+<p class="text-sm text-gray-400">Tập trung năng lượng cho ngày mới</p>
+</div>
+<div class="w-10 h-10 flex items-center justify-center text-primary">
+<i class="ri-play-circle-fill ri-2x"></i>
+</div>
+</div>
+</div>
+<div class="border border-primary border-opacity-30 p-4 rounded-md hover:bg-black hover:bg-opacity-50 transition-all">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="text-lg font-medium text-primary">Thiền Giảm Căng Thẳng - 20 phút</h3>
+<p class="text-sm text-gray-400">Thư giãn và giải tỏa căng thẳng</p>
+</div>
+<div class="w-10 h-10 flex items-center justify-center text-primary">
+<i class="ri-play-circle-fill ri-2x"></i>
+</div>
+</div>
+</div>
+<div class="border border-primary border-opacity-30 p-4 rounded-md hover:bg-black hover:bg-opacity-50 transition-all">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="text-lg font-medium text-primary">Thiền Trước Khi Ngủ - 30 phút</h3>
+<p class="text-sm text-gray-400">Chuẩn bị tâm trí cho giấc ngủ sâu</p>
+</div>
+<div class="w-10 h-10 flex items-center justify-center text-primary">
+<i class="ri-play-circle-fill ri-2x"></i>
+</div>
+</div>
+</div>
+<div class="border border-primary border-opacity-30 p-4 rounded-md hover:bg-black hover:bg-opacity-50 transition-all">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="text-lg font-medium text-primary">Thiền Tăng Cường Tập Trung - 25 phút</h3>
+<p class="text-sm text-gray-400">Nâng cao khả năng tập trung và sáng tạo</p>
+</div>
+<div class="w-10 h-10 flex items-center justify-center text-primary">
+<i class="ri-play-circle-fill ri-2x"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6">
+<p class="text-sm text-gray-400 mb-2">Đăng ký nhận thông báo khi có podcast mới:</p>
+<div class="flex gap-2">
+<input type="email" placeholder="Email của bạn" class="bg-black bg-opacity-50 border border-primary border-opacity-30 px-4 py-2 rounded-md focus:outline-none focus:border-primary text-white w-full">
+<button class="bg-primary text-black py-2 px-6 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-all">Đăng Ký</button>
+</div>
+</div>
+</div>
+</section>
+<!-- More Section -->
+<section id="more-section" class="content-section">
+<div class="close-btn w-8 h-8 flex items-center justify-center text-white">
+<i class="ri-close-line ri-2x"></i>
+</div>
+<div class="content-container">
+<h2 class="text-3xl font-light text-primary mb-6">Thông Tin Thêm</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+<div>
+<h3 class="text-xl font-medium text-primary mb-4">Địa Điểm</h3>
+<p class="mb-2">Trung Tâm NAMA HEALING</p>
+<p class="mb-2">123 Đường Trần Hưng Đạo, Quận 1</p>
+<p class="mb-4">TP. Hồ Chí Minh, Việt Nam</p>
+<p class="flex items-center gap-2 mb-2">
+<span class="w-5 h-5 flex items-center justify-center text-primary"><i class="ri-phone-line"></i></span>
+<span>+84 28 1234 5678</span>
+</p>
+<p class="flex items-center gap-2">
+<span class="w-5 h-5 flex items-center justify-center text-primary"><i class="ri-mail-line"></i></span>
+<span>info@namahealing.vn</span>
+</p>
+</div>
+<div>
+<h3 class="text-xl font-medium text-primary mb-4">Giờ Mở Cửa</h3>
+<p class="flex justify-between mb-2">
+<span>Thứ Hai - Thứ Sáu:</span>
+<span>6:00 - 21:00</span>
+</p>
+<p class="flex justify-between mb-2">
+<span>Thứ Bảy:</span>
+<span>8:00 - 18:00</span>
+</p>
+<p class="flex justify-between mb-2">
+<span>Chủ Nhật:</span>
+<span>9:00 - 17:00</span>
+</p>
+</div>
+</div>
+<div class="mb-8">
+<h3 class="text-xl font-medium text-primary mb-4">Câu Hỏi Thường Gặp</h3>
+<div class="space-y-4">
+<div class="border border-primary border-opacity-30 p-4 rounded-md">
+<h4 class="text-lg font-medium text-primary mb-2">Tôi chưa từng thiền bao giờ, tôi có thể tham gia không?</h4>
+<p>Hoàn toàn có thể! Chúng tôi có các lớp dành riêng cho người mới bắt đầu, nơi bạn sẽ được hướng dẫn từng bước một cách chi tiết và dễ hiểu.</p>
+</div>
+<div class="border border-primary border-opacity-30 p-4 rounded-md">
+<h4 class="text-lg font-medium text-primary mb-2">Tôi cần mang theo những gì khi đến lớp?</h4>
+<p>Bạn chỉ cần mặc trang phục thoải mái và mang theo tâm trí cởi mở. Chúng tôi cung cấp tất cả các thiết bị cần thiết như thảm, gối ngồi và chăn.</p>
+</div>
+<div class="border border-primary border-opacity-30 p-4 rounded-md">
+<h4 class="text-lg font-medium text-primary mb-2">Thiền có lợi ích gì cho sức khỏe?</h4>
+<p>Thiền định đã được khoa học chứng minh có nhiều lợi ích như giảm căng thẳng, cải thiện tập trung, tăng cường hệ miễn dịch, giảm huyết áp và cải thiện chất lượng giấc ngủ.</p>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-center">
+<button class="bg-primary text-black py-2 px-6 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-all">Liên Hệ Với Chúng Tôi</button>
+</div>
+</div>
+</section>
+<script id="navigation-script">
+document.addEventListener('DOMContentLoaded', function() {
+const navItems = document.querySelectorAll('.nav-item');
+const sections = document.querySelectorAll('.content-section');
+const closeBtns = document.querySelectorAll('.close-btn');
+// Navigation click handlers
+navItems.forEach(item => {
+item.addEventListener('click', function() {
+const sectionId = this.id.replace('nav-', '') + '-section';
+const section = document.getElementById(sectionId);
+if (section) {
+section.classList.add('active');
+}
+});
+});
+// Close button handlers
+closeBtns.forEach(btn => {
+btn.addEventListener('click', function() {
+const section = this.closest('.content-section');
+if (section) {
+section.classList.remove('active');
+}
+});
+});
+});
+</script>
+<script id="light-effect-script">
+document.addEventListener('DOMContentLoaded', function() {
+const lightBeam = document.querySelector('.light-beam');
+document.addEventListener('mousemove', function(e) {
+const x = e.clientX / window.innerWidth;
+const y = e.clientY / window.innerHeight;
+// Subtle movement of the light beam based on mouse position
+lightBeam.style.transform = `translate(${(x - 0.5) * 10}px, ${(y - 0.5) * 10}px)`;
+});
+});
+</script>
 </body>
 </html>
